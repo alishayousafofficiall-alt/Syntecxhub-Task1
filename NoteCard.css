@@ -1,0 +1,127 @@
+.note-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  animation: cardIn 0.3s ease forwards;
+  min-height: 140px;
+  position: relative;
+  overflow: hidden;
+}
+.note-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--card-accent, var(--accent));
+  opacity: 0.6;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.note-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+.note-card.editing {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(193,127,62,0.12);
+  transform: none;
+}
+
+.note-body { flex: 1; }
+
+.note-text {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text);
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.note-textarea {
+  width: 100%;
+  background: var(--bg2);
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 10px 12px;
+  resize: vertical;
+  min-height: 90px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.note-textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(193,127,62,0.1);
+}
+
+.note-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.note-date {
+  font-size: 0.7rem;
+  color: var(--text-light);
+}
+
+.note-actions { display: flex; gap: 6px; }
+
+.btn-edit, .btn-delete, .btn-save, .btn-cancel {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-size: 0.74rem;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+
+.btn-edit {
+  background: var(--bg2);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+.btn-edit:hover { background: var(--border); color: var(--text); }
+
+.btn-delete {
+  background: var(--danger-light);
+  color: var(--danger);
+  border: 1px solid #f5c6c6;
+}
+.btn-delete:hover { background: #f5c6c6; }
+
+.btn-save {
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  border: 1px solid transparent;
+  box-shadow: 0 2px 8px rgba(193,127,62,0.2);
+}
+.btn-save:hover { background: var(--accent-dark); }
+
+.btn-cancel {
+  background: var(--bg2);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+.btn-cancel:hover { background: var(--border); color: var(--text); }
+
+.char-count {
+  font-size: 0.68rem;
+  color: var(--text-light);
+  text-align: right;
+  margin-top: -8px;
+}
